@@ -1,0 +1,5 @@
+export { default as DashboardHome } from './DashboardHome'
+export { default as MyModules } from './MyModules'
+export { default as Profile } from './Profile'
+export { default as Settings } from './Settings'
+export { default as Learners } from './Learners'

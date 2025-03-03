@@ -1,0 +1,9 @@
+:root {
+  --typography-base: 'Inter';
+}
+
+*,
+html,
+body {
+  font-family: var(--typography-base);
+}

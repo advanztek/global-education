@@ -1,0 +1,5 @@
+export { default as HomePage } from './HomePage'
+export { default as LoginPage } from './Auth/login'
+export { default as ResetPage } from './Auth/reset'
+export { default as RecoveryEmailPage } from './Auth/recoveryEmail'
+export { default as ResetPasswordPage } from './Auth/resetPassword'
