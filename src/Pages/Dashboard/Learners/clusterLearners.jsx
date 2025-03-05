@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { LearnersData, sortOptions, timeFilterOptions } from './data'
 import { useNavigate } from 'react-router-dom'
 
-export default function Learners () {
+export default function ClusterLearners () {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('')
   const [timeFilter, setTimeFilter] = useState('')
@@ -16,6 +16,10 @@ export default function Learners () {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
+  const handleAddLearner = () => {
+    navigate('/dashboard/facilitator/add-learner')
+  }
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
@@ -39,19 +43,15 @@ export default function Learners () {
     setTimeFilter(value)
   }
 
-  const handleAddLearner = () => {
-    navigate('/dashboard/learning/add-learners');
-  }
-
   const handleViewProfile = learner => {
-    navigate('/dashboard/learning/learners')
+    navigate(`/dashboard/cluster-manager/learners-profile`)
   }
 
   return (
     <>
       <Box>
         <CustomTable
-          title='Your Learners'
+          title='Learners'
           searchValue={searchTerm}
           onSearchChange={handleSearchChange}
           searchPlaceholder='Search'
@@ -59,12 +59,11 @@ export default function Learners () {
           onSortChange={handleSortChange}
           sortOptions={sortOptions}
           timeFilterValue={timeFilter}
+          showSearchBar={true}
+          showBtn={false}
+          onAddLearner={handleAddLearner}
           onTimeFilterChange={handleTimeFilterChange}
           timeFilterOptions={timeFilterOptions}
-          addLearnerText='Add Learner'
-          showBtn={true}
-          showSearchBar={true}
-          onAddLearner={handleAddLearner}
           learners={LearnersData}
           onViewProfile={handleViewProfile}
         />

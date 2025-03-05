@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { LearnersData, sortOptions, timeFilterOptions } from './data'
 import { useNavigate } from 'react-router-dom'
 
-export default function Learners () {
+export default function Facilitators () {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('')
   const [timeFilter, setTimeFilter] = useState('')
@@ -40,18 +40,19 @@ export default function Learners () {
   }
 
   const handleAddLearner = () => {
-    navigate('/dashboard/learning/add-learners');
+    navigate('/dashboard/me/add-facilitator');
   }
 
   const handleViewProfile = learner => {
-    navigate('/dashboard/learning/learners')
+    navigate(`/dashboard/me/facilitator-profile`)
   }
 
   return (
     <>
       <Box>
         <CustomTable
-          title='Your Learners'
+          title='Facilitators'
+          showSearchBar={true}
           searchValue={searchTerm}
           onSearchChange={handleSearchChange}
           searchPlaceholder='Search'
@@ -61,9 +62,7 @@ export default function Learners () {
           timeFilterValue={timeFilter}
           onTimeFilterChange={handleTimeFilterChange}
           timeFilterOptions={timeFilterOptions}
-          addLearnerText='Add Learner'
-          showBtn={true}
-          showSearchBar={true}
+          addLearnerText='Add Facilitators'
           onAddLearner={handleAddLearner}
           learners={LearnersData}
           onViewProfile={handleViewProfile}

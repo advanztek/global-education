@@ -16,9 +16,12 @@ import TablePagination from '@mui/material/TablePagination'
 import Paper from '@mui/material/Paper'
 import SearchBar from '../SearchBar'
 import { typographyCategory } from '../../Constants/typography'
+import { Link } from 'react-router-dom'
 
 export default function CustomTable ({
   title = 'Your Learners',
+  showBtn = true,
+  showSearchBar = false,
   searchValue = '',
   onSearchChange = () => {},
   searchPlaceholder = 'Search',
@@ -78,7 +81,7 @@ export default function CustomTable ({
             gap: 2
           }}
         >
-          <SearchBar />
+          {showSearchBar && <SearchBar width={{ xs: '300px', md: '400px' }} />}
 
           {sortOptions.length > 0 && (
             <FormControl
@@ -172,18 +175,20 @@ export default function CustomTable ({
             </FormControl>
           )}
 
-          <Button
-            variant='contained'
-            onClick={onAddLearner}
-            sx={{
-              textTransform: 'none',
-              backgroundColor: '#702DFF',
-              borderRadius: 2,
-              '&:hover': { backgroundColor: '#5855cc' }
-            }}
-          >
-            {addLearnerText}
-          </Button>
+          {showBtn && (
+            <Button
+              variant='contained'
+              onClick={onAddLearner}
+              sx={{
+                textTransform: 'none',
+                backgroundColor: '#702DFF',
+                borderRadius: 2,
+                '&:hover': { backgroundColor: '#5855cc' }
+              }}
+            >
+              {addLearnerText}
+            </Button>
+          )}
         </Box>
       </Box>
 
@@ -252,11 +257,15 @@ export default function CustomTable ({
                         backgroundColor: '#3F3F44'
                       }}
                     />
-                    <Typography variant='body2'>{learner.name}</Typography>
+                    <Typography sx={{ whiteSpace: 'nowrap' }} variant='body2'>
+                      {learner.name}
+                    </Typography>
                   </Box>
                 </TableCell>
 
-                <TableCell>{learner.email}</TableCell>
+                <TableCell sx={{ whiteSpace: 'nowrap' }}>
+                  {learner.email}
+                </TableCell>
 
                 <TableCell>
                   <Box
@@ -267,6 +276,7 @@ export default function CustomTable ({
                       backgroundColor: '#CCEABB40',
                       color: '#99C183',
                       borderRadius: 2,
+                      whiteSpace: 'nowrap',
                       fontSize: '0.8rem'
                     }}
                   >
@@ -274,7 +284,9 @@ export default function CustomTable ({
                   </Box>
                 </TableCell>
 
-                <TableCell>{learner.dateEnrolled}</TableCell>
+                <TableCell sx={{ whiteSpace: 'nowrap' }}>
+                  {learner.dateEnrolled}
+                </TableCell>
 
                 <TableCell>
                   <Button

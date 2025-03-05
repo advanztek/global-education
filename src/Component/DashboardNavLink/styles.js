@@ -1,4 +1,4 @@
-import { typographyCategory } from "../../Constants/typography"
+import { typographyCategory } from "../../Constants/typography";
 
 export const styles = (theme, active = false, expand) => ({
   wrap: {
@@ -17,7 +17,7 @@ export const styles = (theme, active = false, expand) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: active ? '#5A1F7D' : '#fff',
+      color: active ? 'var(--active-color)' : '#fff',
       fontSize: '25px',
       fontWeight: active ? 800 : 600,
     },
@@ -25,7 +25,7 @@ export const styles = (theme, active = false, expand) => ({
       fontSize: '13px',
       fontWeight: active ? 800 : 600,
       fontFamily: typographyCategory.base.tertiary,
-      color: active ? '#5A1F7D' : '#fff',
+      color: active ? 'var(--active-color)' : '#fff',
       lineHeight: '18.2px'
     },
     '& .label.default': {
@@ -35,6 +35,6 @@ export const styles = (theme, active = false, expand) => ({
       display: { xs: 'none', md: 'block', xl: 'none' }
     }
   }
-})
+});
 
-export default styles
+export default styles;

@@ -8,11 +8,17 @@ import { modalProps, dashboardNavigation } from './data'
 import { NavigationFilled } from '@fluentui/react-icons'
 import DashboardNavLink from '../DashboardNavLink'
 import { useLocation } from 'react-router-dom'
-import { isNavBorderTop } from './utils'
-import { dashboardLayoutPad } from '../../Constants/dimensions'
 import { useEffect, useRef, useState } from 'react'
 
-export default function DashboardSideNav ({
+const sideNavColors = {
+  learning: '#5A1F7D',
+  facilitator: '#BE2431',
+  me: '#DF9A0C',
+  'cluster-manager': '#0D7F41'
+}
+
+export default function DashboardSidenav ({
+  dashboardType,
   mobileOpen,
   onClose,
   onTransitionEnd,
@@ -24,7 +30,7 @@ export default function DashboardSideNav ({
     if (navRef.current) {
       setWidth(navRef.current.offsetWidth)
     }
-  }, [])
+  }, [setWidth])
 
   const { pathname } = useLocation()
   const theme = useTheme()
@@ -36,16 +42,30 @@ export default function DashboardSideNav ({
     setExpand(curr => !curr)
   }
 
+  const navItems = dashboardNavigation[dashboardType] || []
+
   const drawer = (
-    <Box ref={navRef} sx={styles.sideNav}>
+    <Box
+      ref={navRef}
+      sx={{ ...styles.sideNav, backgroundColor: sideNavColors[dashboardType] }}
+    >
       <Box sx={styles.header}>
-        <Box sx={{ pt: '3rem',}}>
+        <Box sx={{ pt: '3rem' }}>
           <Box component='img' src='/Logo/Logo.png' sx={styles.logo} />
         </Box>
-        <Box sx={{ pt:5,}} display={{ xs: 'none', md: 'block', xl: 'none' }}>
+        <Box sx={{ pt: 10 }} display={{ xs: 'none', md: 'block', xl: 'none' }}>
           <Box
             onClick={handleExpandToggle}
-            sx={{ backgroundColor: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', py: '10px', borderRadius: '50%', px: '10px'}}
+            sx={{
+              backgroundColor: '#fff',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              py: '10px',
+              borderRadius: '50%',
+              px: '10px'
+            }}
           >
             <NavigationFilled fontSize='16px' />
           </Box>
@@ -53,23 +73,16 @@ export default function DashboardSideNav ({
       </Box>
 
       <Box sx={styles.navigationWrap}>
-        {dashboardNavigation.map((item, i) => (
-          <Box
+        {navItems.map((item, i) => (
+          <DashboardNavLink
             key={i}
-            py='55px'
-            
-          >
-            {item.nav.map((subItem, j) => (
-              <DashboardNavLink
-                key={j}
-                active={pathname === subItem.link}
-                link={subItem.link}
-                icon={subItem.icon}
-                label={subItem.label}
-                expand={expand}
-              />
-            ))}
-          </Box>
+            active={pathname === item.link}
+            link={item.link}
+            icon={item.icon}
+            label={item.label}
+            expand={expand}
+            dashboardType={dashboardType}
+          />
         ))}
       </Box>
     </Box>

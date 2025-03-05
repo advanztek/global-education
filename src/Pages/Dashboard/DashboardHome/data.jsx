@@ -31,4 +31,62 @@ export const modules = [
   },
 ];
 
+export const clusters = [
+  {
+    id: 1,
+    label: 'Total Learners',
+    cardImg: '/Image/school-bag.png',
+    chartSrc: '/Image/chart.png',
+  },
+  {
+    id: 1,
+    label: 'Total Facilitators',
+    cardImg: '/Image/school-bag.png',
+    chartSrc: '/Image/chart.png',
+  },
+  {
+    id: 1,
+    label: 'Total M & E',
+    cardImg: '/Image/school-bag.png',
+    chartSrc: '/Image/chart.png',
+  },
+  
+];
+export const mandes = [
+  {
+    id: 1,
+    label: 'Total Learners',
+    cardImg: '/Image/school-bag.png',
+    chartSrc: '/Image/chart.png',
+  },
+  {
+    id: 1,
+    label: 'Total Facilitators',
+    cardImg: '/Image/handup.png',
+    chartSrc: '/Image/chart.png',
+  },
+  {
+    id: 1,
+    label: 'Total M & E',
+    cardImg: '/Image/school-bag.png',
+    chartSrc: '/Image/chart.png',
+  },
+  
+];
+export const facilitators = [
+  {
+    id: 1,
+    label: 'Total Learners',
+    cardImg: '/Image/school-bag.png',
+    chartSrc: '/Image/chart.png',
+  },
+  {
+    id: 1,
+    label: 'Total Approved Assignments',
+    cardImg: '/Image/cal.png',
+    chartSrc: '/Image/chart.png',
+  },
+  
+];
+
 

@@ -29,6 +29,7 @@ export const styles = {
   navigationWrap: {
     position: 'relative',
     height: '100%',
+    pt:8,
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
       width: '5px',
